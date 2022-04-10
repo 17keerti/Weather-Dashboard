@@ -2,6 +2,7 @@ var searchButtonEl = document.querySelector('#searchButton');
 var cityNameEl = document.querySelector('#cityName');
 var listGroupEl = document.querySelector('#listGroup');
 var apiKey = "3c32b0a0d311aa42aef0f88c6c69c071";
+var forecastDisplayEl = document.querySelector('#forecastDisplay');
 var futureWeatherContainerEl = document.querySelector('#futureWeatherContainer');
 
 
@@ -30,6 +31,20 @@ var getCityWeather = function (city) {
         response.json().then(function (data) {
           console.log(data);
           displayTodayWeather(data, city);
+          var latitude = data.coord.lat;
+          var longitude = data.coord.lon;
+
+          var uvapiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&appid=' + apiKey;
+          fetch(uvapiUrl)
+            .then(function (response) {
+              if (response.ok) {
+                response.json().then(function (uvdata) {
+                  displayUvIndex(uvdata);
+                });
+              } else {
+                console.log("Error on uvindex apil call  " + response.statusText);
+              }
+            })
         });
         } else {
           alert('Error: ' + response.statusText);
@@ -57,6 +72,14 @@ var getCityWeather = function (city) {
     cityWeatherDisplayEl.append(displayEl);
     console.log(weatherData);
   };
+
+  var displayUvIndex = function (uvdata) {
+    console.log(uvdata);
+    var uvi = uvdata.current.uvi;
+    console.log(uvi);
+    $("#todayweather").append("UV Index: " + uvi);
+  
+  }
 
 searchButtonEl.addEventListener('click', searchButtonHandler);
 $(futureWeatherContainerEl).hide();
