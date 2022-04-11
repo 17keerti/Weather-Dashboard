@@ -1,0 +1,11 @@
+
+.container {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.weatherblock {
+  background-color: lightskyblue;
+  color: white;
+  border-radius: 15px;
+}
