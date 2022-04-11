@@ -93,7 +93,6 @@ var displayFutureForecast = function (weatherForecast, weatherDataForecast) {
 
   var currentDate = moment().format("MM/DD/YYYY");
   var previousDate = "";
-  var delay = 500;
   var numDaysDisplayed = 0;
   for (var i = 0; i < weatherForecast.list.length && numDaysDisplayed < 5; i++) {
     var dateTime = weatherForecast.list[i].dt_txt;
@@ -111,10 +110,8 @@ var displayFutureForecast = function (weatherForecast, weatherDataForecast) {
       <img id=\"wicon\" src=\"http://openweathermap.org/img/wn/${icon}.png\" width=\"50px\" height=\"50px\" alt=\"icon\"></img>\
       <p>Temp: ${temp} °F </p>\
       <p>Humidity: ${humidity} %</p> `;
-      // $(newEl).hide();
+
       $("#futureWeatherContainer").append(newEl);
-      // $(newEl).delay(delay).fadeIn("slow");
-      // delay += 500;
       numDaysDisplayed++;
     }
     previousDate = parsedDate;
