@@ -13,7 +13,7 @@ It is a weather dashboard that takes input from user to search for weather outlo
 
 
 ## Screenshots
-![Screenshot 1](./assets/Images/01.png)
+![Screenshot 1](./assets/images/01.png)
 
 
 ## Deployment URL
