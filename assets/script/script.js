@@ -90,7 +90,7 @@ var displayTodayWeather = function (weather, weatherData) {
   cityDisplayEl.classList = "col-9";
   cityDisplayEl.innerHTML = `${weatherData} (${moment().format(
     "MM/DD/YYYY"
-  )}) <img src="http://openweathermap.org/img/wn/${
+  )}) <img src="https://openweathermap.org/img/wn/${
     weather.weather[0].icon
   }.png"/>  `;
   cityWeatherDisplayEl.append(cityDisplayEl);
